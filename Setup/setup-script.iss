@@ -40,8 +40,8 @@ Source: "..\osn.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\osn.local"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\ssleay32.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\libeay32.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\171671__fins__success-1.wav"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\171673__fins__failure-1.wav"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\171578__fins__3-down-1.wav"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\171580__fins__3-up-1.wav"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\icon closed.ico"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\icon open.ico"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\icon error.ico"; DestDir: "{app}"; Flags: ignoreversion
@@ -58,9 +58,9 @@ Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChang
 Root: "HKCU"; Subkey: "AppEvents\EventLabels\SpaceClosed"; ValueType: string; ValueData: "Hackerspace geschlossen"; Flags: uninsdeletekey
 Root: "HKCU"; Subkey: "AppEvents\EventLabels\SpaceOpened"; ValueType: string; ValueData: "Hackerspace geöffnet"; Flags: uninsdeletekey
 Root: "HKCU"; Subkey: "AppEvents\Schemes\Apps\OSN"; ValueType: string; ValueData: "Open Space Notifier"; Flags: uninsdeletekey
-Root: "HKCU"; Subkey: "AppEvents\Schemes\Apps\OSN\SpaceClosed\.Current"; ValueType: string; ValueData: "{app}\171673__fins__failure-1.wav"
-Root: "HKCU"; Subkey: "AppEvents\Schemes\Apps\OSN\SpaceClosed\.Default"; ValueType: string; ValueData: "{app}\171673__fins__failure-1.wav"
-Root: "HKCU"; Subkey: "AppEvents\Schemes\Apps\OSN\SpaceOpened\.Current"; ValueType: string; ValueData: "{app}\171671__fins__success-1.wav"
-Root: "HKCU"; Subkey: "AppEvents\Schemes\Apps\OSN\SpaceOpened\.Default"; ValueType: string; ValueData: "{app}\171671__fins__success-1.wav"
+Root: "HKCU"; Subkey: "AppEvents\Schemes\Apps\OSN\SpaceClosed\.Current"; ValueType: string; ValueData: "{app}\171578__fins__3-down-1.wav"
+Root: "HKCU"; Subkey: "AppEvents\Schemes\Apps\OSN\SpaceClosed\.Default"; ValueType: string; ValueData: "{app}\171578__fins__3-down-1.wav"
+Root: "HKCU"; Subkey: "AppEvents\Schemes\Apps\OSN\SpaceOpened\.Current"; ValueType: string; ValueData: "{app}\171580__fins__3-up-1.wav"
+Root: "HKCU"; Subkey: "AppEvents\Schemes\Apps\OSN\SpaceOpened\.Default"; ValueType: string; ValueData: "{app}\171580__fins__3-up-1.wav"
 Root: "HKCU"; Subkey: "Software\Microsoft\Windows\CurrentVersion\Run"; ValueType: none; ValueName: "{#MyAppName}"; Flags: uninsdeletevalue
 Root: "HKCU"; Subkey: "Software\Jens Bretschneider\{#MyAppName}"; ValueType: none; Flags: uninsdeletekey
