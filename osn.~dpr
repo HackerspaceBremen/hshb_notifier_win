@@ -1,0 +1,16 @@
+program osn;
+
+uses
+  Forms,
+  Main in 'Main.pas' {frmMain},
+  Properties in 'Properties.pas' {frmProperties};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.CreateForm(TfrmMain, frmMain);
+  Application.CreateForm(TfrmProperties, frmProperties);
+  Application.ShowMainForm := false;
+  Application.Run;
+end.
