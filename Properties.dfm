@@ -4,7 +4,7 @@ object frmProperties: TfrmProperties
   BorderStyle = bsDialog
   Caption = 'Einstellungen'
   ClientHeight = 185
-  ClientWidth = 302
+  ClientWidth = 327
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,14 +15,14 @@ object frmProperties: TfrmProperties
   Position = poScreenCenter
   OnShow = FormShow
   DesignSize = (
-    302
+    327
     185)
   PixelsPerInch = 96
   TextHeight = 13
   object Bevel1: TBevel
     Left = 216
     Top = 14
-    Width = 76
+    Width = 101
     Height = 9
     Anchors = [akLeft, akTop, akRight]
     Shape = bsTopLine
@@ -44,7 +44,7 @@ object frmProperties: TfrmProperties
   object Bevel3: TBevel
     Left = 88
     Top = 94
-    Width = 204
+    Width = 229
     Height = 9
     Anchors = [akLeft, akTop, akRight]
     Shape = bsTopLine
@@ -92,13 +92,13 @@ object frmProperties: TfrmProperties
   object cbAutostart: TCheckBox
     Left = 24
     Top = 112
-    Width = 249
+    Width = 281
     Height = 17
-    Caption = '&Automatisch mit Windows starten'
+    Caption = '&Automatisch mit Windows-Benutzeranmeldung starten'
     TabOrder = 3
   end
   object btnOK: TButton
-    Left = 112
+    Left = 136
     Top = 144
     Width = 83
     Height = 23
@@ -108,7 +108,7 @@ object frmProperties: TfrmProperties
     OnClick = btnOKClick
   end
   object btnCancel: TButton
-    Left = 200
+    Left = 224
     Top = 144
     Width = 83
     Height = 23
@@ -122,7 +122,7 @@ object frmProperties: TfrmProperties
     Top = 136
     Width = 81
     Height = 17
-    Caption = 'Test-BE'
+    Caption = 'Test-Backend'
     TabOrder = 4
   end
 end
