@@ -156,7 +156,7 @@ begin
   end;
 
   if (boolHasChanged and boolSoundNotification) or aForce then
-    PlaySound(PAnsiChar(strSound), 0, SND_ALIAS or SND_APPLICATION or SND_NODEFAULT or SND_ASYNC);
+    PlaySound(PAnsiChar(strSound), 0, SND_ALIAS or SND_APPLICATION or SND_ASYNC);
 end;
 
 procedure TfrmMain.miHomepageClick(Sender: TObject);

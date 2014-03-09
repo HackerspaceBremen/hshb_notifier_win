@@ -115,7 +115,7 @@ AutoIncBuild=1
 MajorVer=2014
 MinorVer=3
 Release=8
-Build=14
+Build=15
 Debug=0
 PreRelease=0
 Special=0
@@ -126,7 +126,7 @@ CodePage=1252
 [Version Info Keys]
 CompanyName=Jens Bretschneider, Hackerspace Bremen e.V.
 FileDescription=Open Space Notifier
-FileVersion=2014.3.8.14
+FileVersion=2014.3.8.15
 InternalName=osn
 LegalCopyright=This software is licensed under GPL version 3.
 LegalTrademarks=keine
