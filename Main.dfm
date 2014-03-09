@@ -15,6 +15,7 @@ object frmMain: TfrmMain
   PixelsPerInch = 96
   TextHeight = 13
   object pmMenu: TJvPopupMenu
+    OnPopup = pmMenuPopup
     ImageMargin.Left = 0
     ImageMargin.Top = 0
     ImageMargin.Right = 0
@@ -23,6 +24,10 @@ object frmMain: TfrmMain
     ImageSize.Width = 0
     Left = 8
     Top = 8
+    object miTestBackendEnabled: TMenuItem
+      Caption = 'Test-Backend aktiv!'
+      Enabled = False
+    end
     object miShowState: TMenuItem
       Caption = 'Status &anzeigen'
       Default = True

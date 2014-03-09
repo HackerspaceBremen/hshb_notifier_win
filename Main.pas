@@ -23,6 +23,7 @@ type
     oiOneInstance: TOneInstance;
     XPManifest: TXPManifest;
     miHomepage: TMenuItem;
+    miTestBackendEnabled: TMenuItem;
     procedure miExitClick(Sender: TObject);
     procedure miShowStateClick(Sender: TObject);
     procedure tiTrayIconDblClick(Sender: TObject; Button: TMouseButton;
@@ -33,6 +34,7 @@ type
     procedure tiTimerTimer(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure miHomepageClick(Sender: TObject);
+    procedure pmMenuPopup(Sender: TObject);
   private
     { Private-Deklarationen }
     backend: TBackend;
@@ -160,6 +162,11 @@ end;
 procedure TfrmMain.miHomepageClick(Sender: TObject);
 begin
   ShellExecute(0, 'OPEN', PChar('http://www.hackerspace-bremen.de/'), '', '', SW_SHOWNORMAL);
+end;
+
+procedure TfrmMain.pmMenuPopup(Sender: TObject);
+begin
+  miTestBackendEnabled.Visible := RegReadBoolDef(HKEY_CURRENT_USER, strRegPathApp + Application.Title, 'UseTestBackend', false);
 end;
 
 end.

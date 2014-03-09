@@ -120,7 +120,7 @@ object frmProperties: TfrmProperties
   object cbUseTestBackend: TCheckBox
     Left = 24
     Top = 136
-    Width = 81
+    Width = 97
     Height = 17
     Caption = 'Test-Backend'
     TabOrder = 4
