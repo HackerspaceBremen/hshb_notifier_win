@@ -13,6 +13,7 @@ object frmProperties: TfrmProperties
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
+  OnClose = FormClose
   OnShow = FormShow
   DesignSize = (
     327
@@ -104,8 +105,8 @@ object frmProperties: TfrmProperties
     Height = 23
     Caption = 'OK'
     Default = True
+    ModalResult = 1
     TabOrder = 5
-    OnClick = btnOKClick
   end
   object btnCancel: TButton
     Left = 224
@@ -114,6 +115,7 @@ object frmProperties: TfrmProperties
     Height = 23
     Cancel = True
     Caption = 'Abbrechen'
+    ModalResult = 2
     TabOrder = 6
     OnClick = btnCancelClick
   end

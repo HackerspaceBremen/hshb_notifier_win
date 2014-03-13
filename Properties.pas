@@ -22,10 +22,10 @@ type
     btnCancel: TButton;
     cbUseTestBackend: TCheckBox;
     procedure btnCancelClick(Sender: TObject);
-    procedure btnOKClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnConfigureSoundClick(Sender: TObject);
     procedure cbSoundNotificationClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private-Deklarationen }
   public
@@ -46,27 +46,6 @@ implementation
 procedure TfrmProperties.btnCancelClick(Sender: TObject);
 begin
   frmProperties.Close;
-end;
-
-procedure TfrmProperties.btnOKClick(Sender: TObject);
-begin
-  if cbAutostart.Checked then begin
-    RegWriteString(HKEY_CURRENT_USER, strRegPathRun, Application.Title, Application.ExeName);
-  end else begin
-    try
-      RegDeleteEntry(HKEY_CURRENT_USER, strRegPathRun, Application.Title)
-    except
-    end;
-  end;
-
-  RegWriteBool(HKEY_CURRENT_USER, strRegPathApp + Application.Title,
-    'BalloonNotification', cbBalloonNotification.Checked);
-  RegWriteBool(HKEY_CURRENT_USER, strRegPathApp + Application.Title,
-    'SoundNotification', cbSoundNotification.Checked);
-  RegWriteBool(HKEY_CURRENT_USER, strRegPathApp + Application.Title,
-    'UseTestBackend', cbUseTestBackend.Checked);
-
-  Close;
 end;
 
 procedure TfrmProperties.FormShow(Sender: TObject);
@@ -96,6 +75,30 @@ end;
 procedure TfrmProperties.cbSoundNotificationClick(Sender: TObject);
 begin
   btnConfigureSound.Enabled := cbSoundNotification.Checked;
+end;
+
+procedure TfrmProperties.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  if ModalResult = mrOK then begin
+
+    if cbAutostart.Checked then begin
+      RegWriteString(HKEY_CURRENT_USER, strRegPathRun, Application.Title, Application.ExeName);
+    end else begin
+      try
+        RegDeleteEntry(HKEY_CURRENT_USER, strRegPathRun, Application.Title)
+      except
+      end;
+    end;
+
+    RegWriteBool(HKEY_CURRENT_USER, strRegPathApp + Application.Title,
+      'BalloonNotification', cbBalloonNotification.Checked);
+    RegWriteBool(HKEY_CURRENT_USER, strRegPathApp + Application.Title,
+      'SoundNotification', cbSoundNotification.Checked);
+    RegWriteBool(HKEY_CURRENT_USER, strRegPathApp + Application.Title,
+      'UseTestBackend', cbUseTestBackend.Checked);
+
+  end;
 end;
 
 end.
