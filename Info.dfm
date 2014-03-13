@@ -551,9 +551,9 @@ object frmInfo: TfrmInfo
   object Label6: TLabel
     Left = 232
     Top = 144
-    Width = 146
+    Width = 144
     Height = 13
-    Caption = 'Bornstr. 14/15 '#183' 28195 Bremen'
+    Caption = 'Bornstr. 14-15 '#183' 28195 Bremen'
   end
   object laHackerspace: TLabel
     Left = 232

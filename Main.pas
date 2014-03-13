@@ -38,6 +38,7 @@ type
   private
     { Private-Deklarationen }
     backend: TBackend;
+    function GetBackendURL: string;
   public
     { Public-Deklarationen }
     procedure DoShowState(aForce: boolean);
@@ -78,9 +79,12 @@ end;
 
 procedure TfrmMain.miPropertiesClick(Sender: TObject);
 begin
-  if not frmProperties.Visible then
-    frmProperties.Show
-  else
+  if not frmProperties.Visible then begin
+    if frmProperties.ShowModal = mrOK then begin
+      Backend.BackendURL := GetBackendURL;
+      DoShowState(false);
+    end;
+  end else
     frmProperties.BringToFront;
 end;
 
@@ -95,16 +99,10 @@ begin
 end;
 
 procedure TfrmMain.FormCreate(Sender: TObject);
-var
-  BackendURL: string;
 begin
   CreateMutexes('osn');
 
-  if RegReadBoolDef(HKEY_CURRENT_USER, strRegPathApp + Application.Title, 'UseTestBackend', false) then
-    BackendURL := 'https://testhackerspacehb.appspot.com/v2/status'
-  else
-    BackendURL := 'https://hackerspacehb.appspot.com/v2/status';
-  Backend := TBackend.Create(BackendURL);
+  Backend := TBackend.Create(GetBackendURL);
 
   DoShowState(false);
 end;
@@ -167,6 +165,14 @@ end;
 procedure TfrmMain.pmMenuPopup(Sender: TObject);
 begin
   miTestBackendEnabled.Visible := RegReadBoolDef(HKEY_CURRENT_USER, strRegPathApp + Application.Title, 'UseTestBackend', false);
+end;
+
+function TfrmMain.GetBackendURL: string;
+begin
+  if RegReadBoolDef(HKEY_CURRENT_USER, strRegPathApp + Application.Title, 'UseTestBackend', false) then
+    result := 'https://testhackerspacehb.appspot.com/v2/status'
+  else
+    result := 'https://hackerspacehb.appspot.com/v2/status';
 end;
 
 end.
