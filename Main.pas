@@ -5,7 +5,8 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Menus, JvMenus, JvComponentBase, JvTrayIcon, ShellAPI, Properties,
-  ExtCtrls, BomeOneInstance, MMSystem, JvXPCore, XPMan, Backend, JclRegistry;
+  ExtCtrls, BomeOneInstance, MMSystem, JvXPCore, XPMan, Backend, JclRegistry,
+  PJVersionInfo;
 
 type
   TfrmMain = class(TForm)
@@ -24,6 +25,7 @@ type
     XPManifest: TXPManifest;
     miHomepage: TMenuItem;
     miTestBackendEnabled: TMenuItem;
+    viVersionInfo: TPJVersionInfo;
     procedure miExitClick(Sender: TObject);
     procedure miShowStateClick(Sender: TObject);
     procedure tiTrayIconDblClick(Sender: TObject; Button: TMouseButton;
@@ -102,7 +104,14 @@ procedure TfrmMain.FormCreate(Sender: TObject);
 begin
   CreateMutexes('osn');
 
+  viVersionInfo.Filename := Application.ExeName;
+
   Backend := TBackend.Create(GetBackendURL);
+  with viVersionInfo do
+    Backend.UserAgent := Format('%s/%d.%d.%d.%d (Windows)', [
+      StringReplace(Application.Title, ' ', '', [rfReplaceAll, rfIgnoreCase]),
+      FileVersionNumber.V1, FileVersionNumber.V2, FileVersionNumber.V3, FileVersionNumber.V4
+    ]);
 
   DoShowState(false);
 end;

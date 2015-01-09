@@ -4,7 +4,7 @@ interface
 
 uses
   Classes, httpsend, ssl_openssl,
-  uLkJSON, DateUtils, Windows, SysUtils;
+  uLkJSON, DateUtils, Windows, SysUtils, Forms;
 
 type
   TBackend = class
@@ -17,6 +17,7 @@ type
     FErrorMsg: string;
     FBackendURL: string;
     OldLastChange: TDateTime;
+    FUserAgent: string;
   private
     resp: TStrings;
     function GetHasChanged: boolean;
@@ -33,6 +34,7 @@ type
     property Error: boolean read FError;
     property ErrorMsg: string read FErrorMsg;
     property BackendURL: string read FBackendURL write FBackendURL;
+    property UserAgent: string read FUserAgent writeFUserAgent;
   end;
 
 implementation
@@ -45,6 +47,21 @@ begin
    SysUtils.DateTimeToSystemTime(GMTTime, GMTST);
    SysUtils.Win32Check(Windows.SystemTimeToTzSpecificLocalTime(nil, GMTST, LocalST));
    Result := SysUtils.SystemTimeToDateTime(LocalST);
+end;
+
+function HttpGetText(const URL: string; const Response: TStrings; const UserAgent: string): Boolean;
+var
+  HTTP: THTTPSend;
+begin
+  HTTP := THTTPSend.Create;
+  HTTP.UserAgent := UserAgent;
+  try
+    Result := HTTP.HTTPMethod('GET', URL);
+    if Result then
+      Response.LoadFromStream(HTTP.Document);
+  finally
+    HTTP.Free;
+  end;
 end;
 
 constructor TBackend.Create(aBackendURL: string);
@@ -71,9 +88,10 @@ end;
 
 procedure TBackend.Read;
 var
-  js:TlkJSONobject;
+  js: TlkJSONobject;
+  UserAgent: string;
 begin
-  if HttpGetText(FBackendURL, resp) then begin
+  if HttpGetText(FBackendURL, resp, FUserAgent) then begin
 
     FError := false;
     FErrorMsg := '';

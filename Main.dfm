@@ -1,7 +1,7 @@
 object frmMain: TfrmMain
-  Left = 470
-  Top = 326
-  Width = 180
+  Left = 355
+  Top = 194
+  Width = 211
   Height = 71
   Caption = 'frmMain'
   Color = clBtnFace
@@ -556,6 +556,10 @@ object frmMain: TfrmMain
   end
   object XPManifest: TXPManifest
     Left = 136
+    Top = 8
+  end
+  object viVersionInfo: TPJVersionInfo
+    Left = 168
     Top = 8
   end
 end
